@@ -133,12 +133,11 @@ void initialAlignment(const pcl::PointCloud<pcl::PointXYZ>::Ptr& source,
     Eigen::Vector3f ev_B = pca.getEigenValues();
     
     // Take average of three eigenvalues directions
-//    double s = ((sqrt(ev_B[0])/sqrt(ev_A[0]))+(sqrt(ev_B[1])/sqrt(ev_A[1]))+(sqrt(ev_B[2])/sqrt(ev_A[2])))/3;
-    double s = 0.65364; //0.0089237
+    double s = ((sqrt(ev_B[0])/sqrt(ev_A[0]))+(sqrt(ev_B[1])/sqrt(ev_A[1]))+(sqrt(ev_B[2])/sqrt(ev_A[2])))/3;
 //    double s = ((sqrt(ev_B[0])/sqrt(ev_A[0])));
     std::cout << "Initial Scale: " << s << std::endl;
-//    //rough
-//    sacIAScaled(source, target, source_align, features_source, features_target, T_initial, false, s, num_iterations, iteration_scale_step);
+    //rough
+    sacIAScaled(source, target, source_align, features_source, features_target, T_initial, false, s, num_iterations, iteration_scale_step);
     max_s = s;
     
     //fine

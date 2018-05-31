@@ -18,7 +18,7 @@
 
 #define PLANE_T 0.04
 #define PLANE_S 0.07
-#define NUM_ITER 1
+#define NUM_ITER 6
 #define SCALE_STEP 0.1
 #define OUT_THRESH 0.005
 #define CLUST_TOL 0.02 // 0.02 default
@@ -171,8 +171,8 @@ int main(int argc, const char * argv[]) {
     // Refine with Iterative Closest Point
     IterativeClosestPoint<PointXYZ, PointXYZ> icp;
     icp.setMaximumIterations(400000);
-    icp.setMaxCorrespondenceDistance(0.05);
-    icp.setRANSACOutlierRejectionThreshold(0.001);
+    icp.setMaxCorrespondenceDistance(OUT_THRESH*10);
+    icp.setRANSACOutlierRejectionThreshold(OUT_THRESH*2);
     icp.setEuclideanFitnessEpsilon(0.000001);
     icp.setInputCloud (source_keypoints_transformed_initial);
     icp.setInputTarget (cloud_target_ptr);
